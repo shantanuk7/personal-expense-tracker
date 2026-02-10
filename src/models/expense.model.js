@@ -1,0 +1,1 @@
+// src/expense.model.js
