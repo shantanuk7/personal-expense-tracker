@@ -52,13 +52,22 @@ Provide an API that returns the total amount spent within a given date range.
 
 ## Setup & Installation
 
-Clone the repository and install dependencies:
+1. Clone the repository
+```
+git clone https://github.com/shantanuk7/personal-expense-tracker.git
+```
 
+2. Navigate to the project directory
+```
+cd personal-expense-tracker
+```
+
+3. Install dependencies:
 ```bash
 npm install
 ```
 
-Create a .env file in the project root (see .env.example):
+2. Create a .env file in the project root (see .env.example):
 ```bash
 cp .env.example .env
 ```
@@ -67,7 +76,9 @@ cp .env.example .env
 
 ### Development
 
-Start the development server with hot reload:
+#### Steps
+
+1. Start the development server with hot reload:
 ```bash
 npm run dev
 ```
