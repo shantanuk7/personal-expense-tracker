@@ -67,7 +67,7 @@ cd personal-expense-tracker
 npm install
 ```
 
-2. Create a .env file in the project root (see .env.example):
+4. Create a .env file in the project root (see .env.example):
 ```bash
 cp .env.example .env
 ```
@@ -78,7 +78,7 @@ cp .env.example .env
 
 #### Steps
 
-1. Start the development server with hot reload:
+Start the development server with hot reload:
 ```bash
 npm run dev
 ```
