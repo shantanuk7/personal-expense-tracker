@@ -5,9 +5,3 @@ import prisma from "../config/db.js";
 export const getExpenses = async ()=>{
     return await prisma.expense.findMany();
 }
-
-export const getUniqueUser = async (userId) => {
-    await prisma.user.findUnique({
-        where: { user_id: userId }
-    });
-};
