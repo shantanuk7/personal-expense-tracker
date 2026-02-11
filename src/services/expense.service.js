@@ -3,7 +3,7 @@
 import { getExpenses } from "../repositories/expense.repository.js";
 import { getUniqueUser } from "../repositories/user.repository.js";
 
-export const getAllExpenses = async (userId) => {
+export const getAllExpenses = async (userId, filters) => {
 
     // Checking if the user exists before fetching expenses
     const userExists = await getUniqueUser(userId);
@@ -14,5 +14,5 @@ export const getAllExpenses = async (userId) => {
         throw error;
     }
 
-    return await getExpenses();
+    return await getExpenses(userId, filters);
 }
