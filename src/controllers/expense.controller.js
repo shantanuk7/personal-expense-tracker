@@ -11,7 +11,14 @@ export const getExpenses = async (req,res)=> {
             throw new Error("Invlaid userId. Please enter a valid integer.")
         }
         
-        const expenses = await getAllExpenses(userId);
+        // Getting category, payment_method, date_range and amount_range from params
+        // Category can be: EMI, food, transport, healthcare, rent, other
+        // Payment Method: Cash, Credit Card, UPI, Debit Card
+
+        const { category, payment_method, date_range, amount_range } = req.query;
+        console.log(category, payment_method, date_range, amount_range);
+        
+        const expenses = await getAllExpenses(userId, req.query);
         res.status(200).json(expenses);
     } catch (error) {
         console.log(error);
