@@ -1,10 +1,6 @@
-// src/expense.repository.js
+// src/repository/user.repository.js
 
 import prisma from "../config/db.js";
-
-export const getExpenses = async ()=>{
-    return await prisma.expense.findMany();
-}
 
 export const getUniqueUser = async (userId) => {
     await prisma.user.findUnique({
