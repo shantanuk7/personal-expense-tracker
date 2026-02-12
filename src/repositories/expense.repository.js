@@ -7,24 +7,26 @@ const getCategories = async ()=>{
 }
 
 export const getExpenses = async (userId, filters)=>{
-    // First getting the categories list
 
     const { category } = filters;
 
     console.log("Filtering by category: "+ category);
 
-    // const dbCategories = await getCategories();
+    const where = {
+        user_id: userId
+    };
 
-    const expenses = await prisma.expense.findMany({
-        where: {
-            user_id: {
-                equals: userId
-            },
-            category: {
-                equals: category.toUpperCase()
-            }
-        }
-    })
+    if (category) {
+        where.category = category;
+    }
 
-    return await prisma.expense.findMany();
+    try {
+        const expenses = await prisma.expense.findMany({
+            where: where
+        })
+        
+        return expenses;
+    } catch (error) {
+        throw new Error("Database Query Failed.");
+    }
 }
