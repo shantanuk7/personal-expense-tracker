@@ -11,9 +11,22 @@ export const getExpenses = async (req,res)=> {
             throw new Error("Invlaid userId. Please enter a valid integer.")
         }
         
-        // Getting category, payment_method, date_range and amount_range from params
-        // Category can be: EMI, food, transport, healthcare, rent, other
-        // Payment Method: Cash, Credit Card, UPI, Debit Card
+        // Expected payload:
+
+        /*
+        {
+            category ( EMI, food, transport, healthcare, rent, other ),
+            payment_method (Cash, Credit Card, UPI, Debit Card),
+            date_range : {
+                start_date,
+                end_date
+            },
+            amount_range : {
+                min,
+                max
+            }
+        }
+        */
 
         const { category, payment_method, date_range, amount_range } = req.query;
         console.log(category, payment_method, date_range, amount_range);
