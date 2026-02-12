@@ -30,6 +30,8 @@ export const getExpenses = async (req,res)=> {
 
         const { category, payment_method, date_range, amount_range } = req.query;
         console.log(category, payment_method, date_range, amount_range);
+
+        // TODO: Check if category exists in category table
         
         const expenses = await getAllExpenses(userId, req.query);
         res.status(200).json(expenses);
