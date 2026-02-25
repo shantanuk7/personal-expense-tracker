@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+}
+
+model User {
+  user_id  Int       @id @default(autoincrement())
+  email    String    @unique
+  name     String
+  expenses Expense[]
+}
+
+model Expense {
+  expense_id     Int            @id @default(autoincrement())
+  title          String
+  description    String
+  category       CATEGORY
+  amount         Decimal
+  payment_method PAYMENT_METHOD
+  user_id        Int
+  user           User           @relation(fields: [user_id], references: [user_id])
+
+  @@index([user_id], map: "Expense_user_id_fkey")
+}
+
+model Category {
+  category_id Int @id @default(autoincrement())
+  category_name CATEGORY  @unique
+}
+
+enum PAYMENT_METHOD {
+  UPI
+  CASH
+  CREDIT_CARD
+  DEBIT_CARD
+}
+
+enum CATEGORY {
+  EMI
+  FOOD
+  TRANSPORT
+  HEALTHCARE
+  RENT
+  OTHER
+}
